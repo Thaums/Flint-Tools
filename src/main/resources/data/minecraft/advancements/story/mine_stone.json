@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:story/root",
+  "criteria": {
+    "get_flint": {
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:flint"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.story.mine_stone.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:flint"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.story.mine_stone.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_flint"
+    ]
+  ]
+}
