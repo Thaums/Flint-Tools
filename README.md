@@ -1,4 +1,10 @@
-# Fabric Example Mod
+# Flint Tools
+
+## About
+
+This is a super simple mod for Minecraft 1.19 that disables crafting of wooden and stone tools and introduces a set of flint tools.
+Gravel can be directly converted to flint to minimize RNG grinding.
+Wood can still be collected as usual, but be aware that it is not useful for crafting tools. Also, the mining speed without tools has been halved, so you better find some gravel soon...
 
 ## Setup
 
