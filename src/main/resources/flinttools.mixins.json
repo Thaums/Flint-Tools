@@ -4,11 +4,10 @@
   "package": "net.abadger.flinttools.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-  ],
-  "client": [
-    "ExampleMixin",
     "PlayerEntityMixin",
     "RecipeFieldAccessor"
+  ],
+  "client": [
   ],
   "injectors": {
     "defaultRequire": 1

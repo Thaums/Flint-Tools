@@ -8,6 +8,7 @@ import net.minecraft.util.registry.Registry;
 public class ItemsInit {
 
     public static final Item
+            WOODEN_CLUB,
             FLINT_AXE,
             FLINT_DAGGER,
             FLINT_HOE,
@@ -19,6 +20,7 @@ public class ItemsInit {
     }
 
     public static void init() {
+        register("wooden_club", WOODEN_CLUB);
         // flint
         register("flint_axe", FLINT_AXE);
         register("flint_dagger", FLINT_DAGGER);
@@ -28,10 +30,16 @@ public class ItemsInit {
     }
 
     static {
+        WOODEN_CLUB = new SwordItem(
+                ToolMaterials.WOOD,
+                3,
+                -3.0f,
+                new Item.Settings().group(ModItemGroup.FLINTTOOLS)
+        );
         FLINT_DAGGER = new SwordItem(
                 new FlintToolMaterial(),
                 1,
-                -0.8f,
+                -1.2f,
                 new Item.Settings().group(ModItemGroup.FLINTTOOLS)
         );
         FLINT_SHOVEL = new ShovelItem(
