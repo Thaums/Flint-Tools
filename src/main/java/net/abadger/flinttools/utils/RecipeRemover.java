@@ -17,17 +17,19 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeManager;
 import net.minecraft.recipe.RecipeType;
-import net.minecraft.tag.ItemTags;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public class RecipeRemover {
     public static void initRemoveRecipes() {
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {
             final RecipeManager mgr = server.getRecipeManager();
-
-            removeRecipes(mgr, ModItemTags.WOODEN_TOOLS);
-            removeRecipes(mgr, ModItemTags.STONE_TOOLS);
+            final DynamicRegistryManager registryManager = server.getRegistryManager();
+            removeRecipes(mgr, ModItemTags.WOODEN_TOOLS, registryManager);
+            removeRecipes(mgr, ModItemTags.STONE_TOOLS, registryManager);
 
             // if (!EarlyGame.CONFIG.crafting.enableWoodenTools)
             //     removeRecipes(mgr, ModItemTags.WOODEN_TOOLS);
@@ -47,10 +49,10 @@ public class RecipeRemover {
      * @param recipeManager The recipe manager
      * @param stack         The ItemStack output of the recipe to remove
      */
-    private static void removeRecipes(final RecipeManager recipeManager, final ItemStack stack) {
+    private static void removeRecipes(final RecipeManager recipeManager, final ItemStack stack, final DynamicRegistryManager registryManager) {
         final int recipesRemoved = removeRecipes(recipeManager, recipe -> {
-            final ItemStack recipeOutput = recipe.getOutput();
-            return !recipeOutput.isEmpty() && (!stack.isEmpty() && recipeOutput.getCount() == stack.getCount() && recipeOutput.getItem() == stack.getItem() &&ItemStack.areNbtEqual(recipeOutput, stack));
+            final ItemStack recipeOutput = recipe.getOutput(registryManager);
+            return !recipeOutput.isEmpty() && (!stack.isEmpty() && recipeOutput.getCount() == stack.getCount() && recipeOutput.getItem() == stack.getItem() &&ItemStack.canCombine(recipeOutput, stack));
         });
 
         FlintTools.LOGGER.info("Removed {} recipe(s)", recipesRemoved);
@@ -63,9 +65,9 @@ public class RecipeRemover {
      * @param recipeManager The recipe manager
      * @param tag           The tag
      */
-    private static void removeRecipes(final RecipeManager recipeManager, final TagKey<Item> tag) {
+    private static void removeRecipes(final RecipeManager recipeManager, final TagKey<Item> tag, final DynamicRegistryManager registryManager) {
         final int recipesRemoved = removeRecipes(recipeManager, recipe -> {
-            final ItemStack recipeOutput = recipe.getOutput();
+            final ItemStack recipeOutput = recipe.getOutput(registryManager);
             return !recipeOutput.isEmpty() && recipeOutput.isIn(tag);
         });
 

@@ -2,9 +2,9 @@ package net.abadger.flinttools.utils;
 
 
 import net.minecraft.item.Item;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public final class ModItemTags {
     public static final TagKey<Item> WOODEN_TOOLS = register("wooden_tools");
@@ -16,7 +16,7 @@ public final class ModItemTags {
     private ModItemTags() { }
 
     private static TagKey<Item> register(String id) {
-        return TagKey.of(Registry.ITEM_KEY, new Identifier("flinttools", id));
+        return TagKey.of(RegistryKeys.ITEM, new Identifier("flinttools", id));
     }
 }
 
