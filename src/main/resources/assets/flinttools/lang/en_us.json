@@ -1,15 +1,12 @@
 {
     "item.flinttools.wooden_club": "Wooden Club",
-    "item.flinttools.flint_dagger": "Flint Dagger",
-    "item.flinttools.flint_pickaxe": "Flint Pickaxe",
-    "item.flinttools.flint_axe": "Flint Axe",
-    "item.flinttools.flint_shovel": "Flint Shovel",
-    "item.flinttools.flint_hoe": "Flint Hoe",
+    "item.flinttools.flint_dagger": "Shiv",
+    "item.flinttools.flint_axe": "Hatchet",
 
     "itemGroup.earlygame.eggroup": "Flint Tools",
 
     "advancements.story.mine_stone.title": "Stone Age",
     "advancements.story.mine_stone.description": "Discover a sharp material",
     "advancements.story.upgrade_tools.title": "Primitive Technology",
-    "advancements.story.upgrade_tools.description": "Construct a flint Pickaxe"
+    "advancements.story.upgrade_tools.description": "Assemble a hatchet"
 }

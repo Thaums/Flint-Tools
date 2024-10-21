@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:story/mine_stone",
   "criteria": {
-    "flint_pickaxe": {
+    "flint_axe": {
       "conditions": {
         "items": [
           {
             "items": [
-              "flinttools:flint_pickaxe"
+              "flinttools:flint_axe"
             ]
           }
         ]
@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "flinttools:flint_pickaxe",
+      "item": "flinttools:flint_axe",
       "nbt": "{Damage:0}"
     },
     "show_toast": true,
@@ -32,7 +32,7 @@
   },
   "requirements": [
     [
-      "flint_pickaxe"
+      "flint_axe"
     ]
   ]
 }

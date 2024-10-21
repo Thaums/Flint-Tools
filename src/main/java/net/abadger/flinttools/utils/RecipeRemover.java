@@ -30,6 +30,9 @@ public class RecipeRemover {
             final DynamicRegistryManager registryManager = server.getRegistryManager();
             removeRecipes(mgr, ModItemTags.WOODEN_TOOLS, registryManager);
             removeRecipes(mgr, ModItemTags.STONE_TOOLS, registryManager);
+            removeRecipes(mgr, ModItemTags.IRON_TOOLS, registryManager);
+            removeRecipes(mgr, ModItemTags.GOLD_TOOLS, registryManager);
+            removeRecipes(mgr, ModItemTags.DIAMOND_TOOLS, registryManager);
 
             // if (!EarlyGame.CONFIG.crafting.enableWoodenTools)
             //     removeRecipes(mgr, ModItemTags.WOODEN_TOOLS);

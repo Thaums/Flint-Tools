@@ -2,6 +2,7 @@ package net.abadger.flinttools.mixin;
 
 import net.abadger.flinttools.FlintTools;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffect;
@@ -34,8 +35,14 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         int strengthPower = -1;
         if (strengthEffect != null)
             strengthPower = strengthEffect.getAmplifier();
+        float hardness = block.getBlock().getHardness();
+        float baseBreakSpeed = 1.0f;
+        if (hardness >= 0.5f)
+            baseBreakSpeed = 0.1f;
+        if (hardness >= 1.0f)
+            baseBreakSpeed = 0.0f;
         if (itemStack.getMiningSpeedMultiplier(block) == 1.0F) {
-            cir.setReturnValue(cir.getReturnValue() * 0.05F + 0.75F * (strengthPower + 1));
+            cir.setReturnValue(cir.getReturnValue() * baseBreakSpeed + 0.75F * (strengthPower + 1));
         }
     }
 }

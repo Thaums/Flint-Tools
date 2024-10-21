@@ -31,5 +31,12 @@
     [
       "get_flint"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "flinttools:flint_axe",
+      "flinttools:flint_dagger",
+      "flinttools:wooden_club"
+    ]
+  }
 }

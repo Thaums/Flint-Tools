@@ -8,17 +8,17 @@ public class FlintToolMaterial implements ToolMaterial {
 
     @Override
     public int getDurability() {
-        return 59;
+        return 25;
     }
 
     @Override
     public float getMiningSpeedMultiplier() {
-        return 3.0f;
+        return 1.5f;
     }
 
     @Override
     public float getAttackDamage() {
-        return 1.0f;
+        return 0.0f;
     }
 
     @Override
