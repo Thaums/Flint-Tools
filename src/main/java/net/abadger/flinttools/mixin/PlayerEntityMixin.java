@@ -4,6 +4,9 @@ import net.abadger.flinttools.FlintTools;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -27,8 +30,12 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     )
     private void breakingSpeed(BlockState block, CallbackInfoReturnable<Float> cir) {
         ItemStack itemStack = this.getMainHandStack();
+        StatusEffectInstance strengthEffect = this.getStatusEffect(StatusEffects.STRENGTH);
+        int strengthPower = -1;
+        if (strengthEffect != null)
+            strengthPower = strengthEffect.getAmplifier();
         if (itemStack.getMiningSpeedMultiplier(block) == 1.0F) {
-            cir.setReturnValue(cir.getReturnValue() * 0.3F);
+            cir.setReturnValue(cir.getReturnValue() * 0.05F + 0.75F * (strengthPower + 1));
         }
     }
 }
